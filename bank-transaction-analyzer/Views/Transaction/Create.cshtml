@@ -1,0 +1,37 @@
+@model YourNamespace.Models.Transaction
+
+@{
+    ViewBag.Title = "Create Transaction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Transaction</h2>
+
+@using (Html.BeginForm("Create", "Transaction", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-group">
+        @Html.LabelFor(m => m.Amount)
+        @Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Amount, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Date)
+        @Html.TextBoxFor(m => m.Date, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.AccountId)
+        @Html.DropDownListFor(m => m.AccountId, new SelectList(ViewBag.Accounts, "AccountId", "AccountNumber"), "Select Account", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.AccountId, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Transaction")
+</div>

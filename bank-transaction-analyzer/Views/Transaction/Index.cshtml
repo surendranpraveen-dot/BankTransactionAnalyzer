@@ -1,0 +1,56 @@
+@model IEnumerable<bank_transaction_analyzer.Models.Transaction>
+
+@{
+    ViewBag.Title = "Transaction Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Transactions</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().TransactionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().AccountId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountId)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.TransactionId }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TransactionId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TransactionId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>

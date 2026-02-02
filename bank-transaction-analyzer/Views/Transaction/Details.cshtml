@@ -1,0 +1,25 @@
+@model BankTransactionAnalyzer.Models.Transaction
+
+<h2>Transaction Details</h2>
+
+<div>
+    <h4>Transaction</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Transaction ID</dt>
+        <dd class="col-sm-10">@Model.TransactionId</dd>
+
+        <dt class="col-sm-2">Amount</dt>
+        <dd class="col-sm-10">@Model.Amount</dd>
+
+        <dt class="col-sm-2">Date</dt>
+        <dd class="col-sm-10">@Model.Date.ToString("MM/dd/yyyy")</dd>
+
+        <dt class="col-sm-2">Account ID</dt>
+        <dd class="col-sm-10">@Model.AccountId</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
